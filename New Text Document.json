@@ -1,0 +1,30 @@
+{
+  "select": [
+    "(Nr_count / tot_count) * 100 as \" BD Four Hour Reach %\""
+  ],
+  "using": ["join_key"], //DEFAULT
+  "where": [],
+  "join": "full outer join", //DEFAULT
+  "append": "SETTINGS join_use_nulls = 1", //DEFAULT
+  "from": [
+    {
+      "select": ["1 as join_key", "COUNT(SRN) as Nr_count"],
+    //   "1 as join_key" DEFAULT
+      "group_by": ["join_key"], // DEFAULT
+      "from": {}, //DEFAULT
+      "where": [
+        "BD_Four_Hour_Reach ='Y'",
+        "PM_or_BD_Call = 'BD' and Status in ('Closed', 'Completed')"
+      ],
+      "left_join": true, //DEFAULT
+      "time_filter": true //DEFAULT
+    },
+    {
+      "select": ["1 as join_key", "COUNT(SRN) as tot_count"], // 1 as join_key" DEFAULT
+      "group_by": ["join_key"], //DEFAULT
+      "where": ["PM_or_BD_Call = 'BD' and Status in ('Closed', 'Completed')"],
+      "from": {}, //DEFAULT
+      "left_join": true //DEFAULT
+    }
+  ]
+}
