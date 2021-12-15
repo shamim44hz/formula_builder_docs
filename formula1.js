@@ -353,11 +353,13 @@ const handleNonType1 = () => {
             } 
         } else item ++
     }
-    console.log(beforeWhere)
-    console.log(afterWhere)
+    aggrTemplate.Formula = beforeWhere
+    aggrTemplate.Where = globalArr[1]
+
+    console.log(aggrTemplate)
 }
 
-handleNonType1()
+if (aggrCount === 1) handleNonType1()
 
 /********************************************* TYPE - 1 ********************************************************* */
 
