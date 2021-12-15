@@ -226,28 +226,33 @@
 //         componentType: ")",
 //         operator: ")",
 //         isHover: false,
-//         addButton: false,
+//         addButton: false, 
 //     },
 // ];
 
-const inputFields = [{"id":"306de6c1-9fe7-47e5-ba05-575901547720","value":" ( ","componentType":"(","operator":"(","isHover":false,"addButton":false},{"id":"bedc789a-08f5-4037-818e-ea09143a1430","value":"COUNT","componentType":"AGGR","operator":"AGGR","isHover":false,"addButton":false},{"id":"582ae765-ee06-4ba6-a542-4250c4cf729a","value":"Country","componentType":"CH","operator":"CH","isHover":false,"addButton":false},{"id":"36323703-ec7d-4295-8024-7db979188c22","value":" WHERE ","componentType":"WHERE","operator":"WHERE","isHover":false,"addButton":false},{"id":"18f37f96-7289-453e-a105-b53c6253f048","value":"State","componentType":"CH","operator":"CH","isHover":false},{"id":"20a0f0df-6a99-4aff-a215-2e995740433c","value":"<>","componentType":"Comparator","operator":"Comparator","isHover":false},{"id":"fd575dcf-221c-4969-9458-b3819d5187af","value":["CA","CT","GA","DC"],"componentType":"Categorical","operator":"Categorical","isHover":false},{"id":"b68a093e-8ba5-4228-acf7-46c46ce9f7eb","value":" ) ","componentType":")","operator":")","isHover":false,"addButton":false},{"id":"980c0e82-3ff2-4ce1-ae00-5b54fbbc66e8","value":"/","componentType":"MATH","operator":"MATH","isHover":false,"addButton":false},{"id":"4c3d7240-14b7-482f-9fdd-ea5b1166ccd3","value":" ( ","componentType":"(","operator":"(","isHover":false,"addButton":false},{"id":"86dda57d-a5c0-4f2e-99c5-114e5cf40cf9","value":"SUM","componentType":"AGGR","operator":"AGGR","isHover":false,"addButton":false},{"id":"037d4106-1d93-4df7-ae56-7a3e193998a2","value":"State","componentType":"CH","operator":"CH","isHover":false,"addButton":false},{"id":"0334849d-8a83-4c50-ac0e-a78cf7862505","value":" WHERE ","componentType":"WHERE","operator":"WHERE","isHover":false,"addButton":false},{"id":"d941b865-7c50-4ffb-ab56-f13576ad8539","value":"ACV","componentType":"CH","operator":"CH","isHover":false},{"id":"7ca361a7-8b02-4041-a221-460e3d3ca867","value":"=","componentType":"Comparator","operator":"Comparator","isHover":false},{"id":"422a80a6-2e5b-480c-86e8-78f535cce732","value":"786888989","componentType":"Numerical","operator":"Numerical","isHover":false},{"id":"e25ab269-3cfa-492d-90b3-c6eb83b59ba9","value":" ) ","componentType":")","operator":")","isHover":false,"addButton":false},{"id":"32b9d310-c00a-4c2b-9252-92a6fc4deb46","value":"x","componentType":"MATH","operator":"MATH","isHover":false,"addButton":false},{"id":"e5227eae-f31b-4f91-8524-2d0f499f7023","value":"10000","componentType":"CONST","operator":"CONST","isHover":false,"addButton":false}]
+// const inputFields = [{"id":"306de6c1-9fe7-47e5-ba05-575901547720","value":" ( ","componentType":"(","operator":"(","isHover":false,"addButton":false},{"id":"bedc789a-08f5-4037-818e-ea09143a1430","value":"COUNT","componentType":"AGGR","operator":"AGGR","isHover":false,"addButton":false},{"id":"582ae765-ee06-4ba6-a542-4250c4cf729a","value":"Country","componentType":"CH","operator":"CH","isHover":false,"addButton":false},{"id":"36323703-ec7d-4295-8024-7db979188c22","value":" WHERE ","componentType":"WHERE","operator":"WHERE","isHover":false,"addButton":false},{"id":"18f37f96-7289-453e-a105-b53c6253f048","value":"State","componentType":"CH","operator":"CH","isHover":false},{"id":"20a0f0df-6a99-4aff-a215-2e995740433c","value":"<>","componentType":"Comparator","operator":"Comparator","isHover":false},{"id":"fd575dcf-221c-4969-9458-b3819d5187af","value":["CA","CT","GA","DC"],"componentType":"Categorical","operator":"Categorical","isHover":false},{"id":"b68a093e-8ba5-4228-acf7-46c46ce9f7eb","value":" ) ","componentType":")","operator":")","isHover":false,"addButton":false},{"id":"980c0e82-3ff2-4ce1-ae00-5b54fbbc66e8","value":"/","componentType":"MATH","operator":"MATH","isHover":false,"addButton":false},{"id":"4c3d7240-14b7-482f-9fdd-ea5b1166ccd3","value":" ( ","componentType":"(","operator":"(","isHover":false,"addButton":false},{"id":"86dda57d-a5c0-4f2e-99c5-114e5cf40cf9","value":"SUM","componentType":"AGGR","operator":"AGGR","isHover":false,"addButton":false},{"id":"037d4106-1d93-4df7-ae56-7a3e193998a2","value":"State","componentType":"CH","operator":"CH","isHover":false,"addButton":false},{"id":"0334849d-8a83-4c50-ac0e-a78cf7862505","value":" WHERE ","componentType":"WHERE","operator":"WHERE","isHover":false,"addButton":false},{"id":"d941b865-7c50-4ffb-ab56-f13576ad8539","value":"ACV","componentType":"CH","operator":"CH","isHover":false},{"id":"7ca361a7-8b02-4041-a221-460e3d3ca867","value":"=","componentType":"Comparator","operator":"Comparator","isHover":false},{"id":"422a80a6-2e5b-480c-86e8-78f535cce732","value":"786888989","componentType":"Numerical","operator":"Numerical","isHover":false},{"id":"e25ab269-3cfa-492d-90b3-c6eb83b59ba9","value":" ) ","componentType":")","operator":")","isHover":false,"addButton":false},{"id":"32b9d310-c00a-4c2b-9252-92a6fc4deb46","value":"x","componentType":"MATH","operator":"MATH","isHover":false,"addButton":false},{"id":"e5227eae-f31b-4f91-8524-2d0f499f7023","value":"10000","componentType":"CONST","operator":"CONST","isHover":false,"addButton":false}]
+
+// let myFormula = "";
+// console.log(myFormula);
+// const splitted = myFormula.split(" ");
+// console.log(splitted);
 
 
-let myFormula = "";
+/*********************************** Formula and count *************************** */
 
-for (let item of inputFields) myFormula += `${item.value} `;
+const inputFields = [{"id":"86b49f44-5832-48cb-b170-ce97ebee890d","value":" ( ","componentType":"(","operator":"(","isHover":false,"addButton":false},{"id":"ef997ac7-a8c1-416a-982c-6df30cb8a55f","value":"COUNT","componentType":"AGGR","operator":"AGGR","isHover":false,"addButton":false},{"id":"4da00197-9e2a-409c-8784-ef4a8febcb75","value":"Category_Level_1","componentType":"CH","operator":"CH","isHover":false,"addButton":false},{"id":"e4a34594-1968-4038-bf90-09b20df06b37","value":" WHERE ","componentType":"WHERE","operator":"WHERE","isHover":false,"addButton":false},{"id":"3d6ad9d9-834d-4d88-bdb1-e6cb1f9a0079","value":"Contract_Number","componentType":"CH","operator":"CH","isHover":false,"addButton":false},{"id":"3dfd0bd4-4567-4248-9e46-34d6c4a03a13","value":"<>","componentType":"Comparator","operator":"Comparator","isHover":false,"addButton":false},{"id":"33680d9b-af15-458d-bf66-0d234da3f527","value":["02702 - Phase II","1-07-42-04","1-07-89-44"],"componentType":"Categorical","operator":"Categorical","isHover":true,"addButton":false},{"id":"67c895ef-9eee-4359-af9e-2c3ba39d06d7","value":" ) ","componentType":")","operator":")","isHover":false,"addButton":false},{"id":"248f5fb7-c43f-4d7a-b3c2-ba85f18dd4f7","value":"","componentType":"Categorical","operator":"Categorical"}]
 
-console.log(myFormula);
+let aggrCount = 0;
 
-// const brace = " ( ( Aggr CH WHERE CH = ABC,EFG,GHI ) / ( Aggr CH WHERE ABC = 100  ) * ( 1 + 2 ) ) ";
+for (let item of inputFields) {
+    if(item.componentType === "AGGR") aggrCount += 1
+}
 
-const splitted = myFormula.split(" ");
+/*********************************** HANDLE WHERE ********************************* */
+
 const math = ["+", "-", "/", "*"];
 const aggr = ["SUM", "COUNT", "AVG"];
 
-console.log(splitted);
-
-/*********************************** HANDLE WHERE ********************************* */
 
 const handleWhere = (element) => {
     console.log(element)
@@ -266,8 +271,6 @@ const matcher = {
     ">=": ">=",
     "<=": "<="
   };
-
-
 
 let globalArr = {}
 
@@ -319,6 +322,44 @@ whereElementsFetcher()
 console.log(globalArr)
 
 /******************************** WHERE ENDS ****************************** */
+
+/********************************** NON TYPE - 1 ********************************** */
+
+const handleNonType1 = () => {
+    let item = 0
+    let aggrTemplate = {
+        Default_Function: "",
+        Formula: "",
+        Where: "",
+    }
+    let beforeWhere = ""
+    let afterWhere = ""
+    while (item < inputFields.length) {
+        if(inputFields[item].componentType === "AGGR") {
+            aggrTemplate.Default_Function = inputFields[item].value
+
+            while(inputFields[item].componentType !== "WHERE" && inputFields[item].componentType !== ")") {
+                beforeWhere += `${inputFields[item].value} `
+                console.log(beforeWhere)
+                item += 1
+            } 
+
+            if (inputFields[item].componentType === "WHERE") {
+                item ++
+                while(inputFields[item].componentType !== ")") {
+                    afterWhere += inputFields[item].value
+                    item ++
+                }
+            } 
+        } else item ++
+    }
+    console.log(beforeWhere)
+    console.log(afterWhere)
+}
+
+handleNonType1()
+
+/********************************************* TYPE - 1 ********************************************************* */
 
 const template = JSON.stringify({
     select: ["1 as join_key", ""], // 1 as join_key" DEFAULT // COUNT(SRN) as tot_count
@@ -415,105 +456,105 @@ console.log(finalList)
 
 
 
-let i = 0;
+// let i = 0;
 
-/**
- * NOTES:
- * 1. After AGGR one has to close the operators bracket
- * 2. Handle all the states accordingly on bracket close
- *
- * PROBLEMS I AM FACING:
- * 1. If i
- */
-
-
-while (i < splitted.length) {
-    if (splitted[i] === "(") {
-        includeList.push(splitted[i]);
-        i += 1;
-        if (i === splitted.length - 1) break;
-    } else if (aggr.includes(splitted[i])) {
-        let beforeWhere = [];
-        let afterWhere = [];
-        includeList.push(splitted[i]);
-        i++;
-        while (splitted[i] !== "WHERE" && splitted[i] !== ")") {
-            beforeWhere.push(splitted[i]);
-            // console.log(splitted[i]);
-            i++;
-            if (i === splitted.length - 1) break;
-        }
-        while (splitted[i] !== ")") {
-            //here
-            // console.log(splitted[i]);
-            afterWhere.push(splitted[i]);
-            i++;
-            if (i === splitted.length - 1) break;
-        }
-        includeList.push(beforeWhere);
-        // console.log(beforeWhere)
-
-        includeList.push(afterWhere);
-        // console.log(afterWhere)
-
-        includeList.push(splitted[i]);
-        if (math.includes(splitted[i])) includeList.push(splitted[i]);
-        if (i === splitted.length - 1) break;
-    } else {
-        includeList.push(splitted[i]);
-        i++;
-    }
-}
-
-console.log(includeList);
+// /**
+//  * NOTES:
+//  * 1. After AGGR one has to close the operators bracket
+//  * 2. Handle all the states accordingly on bracket close
+//  *
+//  * PROBLEMS I AM FACING:
+//  * 1. If i
+//  */
 
 
+// while (i < splitted.length) {
+//     if (splitted[i] === "(") {
+//         includeList.push(splitted[i]);
+//         i += 1;
+//         if (i === splitted.length - 1) break;
+//     } else if (aggr.includes(splitted[i])) {
+//         let beforeWhere = [];
+//         let afterWhere = [];
+//         includeList.push(splitted[i]);
+//         i++;
+//         while (splitted[i] !== "WHERE" && splitted[i] !== ")") {
+//             beforeWhere.push(splitted[i]);
+//             // console.log(splitted[i]);
+//             i++;
+//             if (i === splitted.length - 1) break;
+//         }
+//         while (splitted[i] !== ")") {
+//             //here
+//             // console.log(splitted[i]);
+//             afterWhere.push(splitted[i]);
+//             i++;
+//             if (i === splitted.length - 1) break;
+//         }
+//         includeList.push(beforeWhere);
+//         // console.log(beforeWhere)
 
-let helloStr = ""
+//         includeList.push(afterWhere);
+//         // console.log(afterWhere)
+
+//         includeList.push(splitted[i]);
+//         if (math.includes(splitted[i])) includeList.push(splitted[i]);
+//         if (i === splitted.length - 1) break;
+//     } else {
+//         includeList.push(splitted[i]);
+//         i++;
+//     }
+// }
+
+// console.log(includeList);
 
 
 
-let myTemplate = {...template}
-//   "(Nr_count / tot_count) * 100 as \" BD Four Hour Reach %\""
+// let helloStr = ""
 
-let finalTemplates = [];
 
-let myStr = ""
 
-let item = 0
+// let myTemplate = {...template}
+// //   "(Nr_count / tot_count) * 100 as \" BD Four Hour Reach %\""
 
-let counter = 0;
+// let finalTemplates = [];
 
-while(item < includeList.length) {
-    let tempStr;
+// let myStr = ""
+
+// let item = 0
+
+// let counter = 0;
+
+// while(item < includeList.length) {
+//     let tempStr;
     
-    if (aggr.includes(includeList[item])) {
-        tempStr = `"${includeList[item]} (${includeList[item + 1]}) as part_${counter}"`
-        myStr += `part_${counter}`
-        item += 2
-        counter ++
-        if (myTemplate.select[1] !== "") myTemplate.select[1] = tempStr
-        // if (item === includeList.length -1) break
-    }
+//     if (aggr.includes(includeList[item])) {
+//         tempStr = `"${includeList[item]} (${includeList[item + 1]}) as part_${counter}"`
+//         myStr += `part_${counter}`
+//         item += 2
+//         counter ++
+//         if (myTemplate.select[1] !== "") myTemplate.select[1] = tempStr
+//         // if (item === includeList.length -1) break
+//     }
 
-    else if (Array.isArray(includeList[item]) && includeList[item].includes("WHERE")) {
-        let output = handleWhere(includeList[item])
-        // if (item === includeList.length -1) break
-        item += 1
-    }
-    else {
-        myStr += includeList[item]
-        item += 1
-        // if (item === includeList.length -1) break
-    }
+//     else if (Array.isArray(includeList[item]) && includeList[item].includes("WHERE")) {
+//         let output = handleWhere(includeList[item])
+//         // if (item === includeList.length -1) break
+//         item += 1
+//     }
+//     else {
+//         myStr += includeList[item]
+//         item += 1
+//         // if (item === includeList.length -1) break
+//     }
 
-    if(myTemplate.select[1] !== "") {
-        finalTemplates.push(myTemplate)
-        myTemplate = {...template}
-        if (item === includeList.length -1) break
-    }
+//     if(myTemplate.select[1] !== "") {
+//         finalTemplates.push(myTemplate)
+//         myTemplate = {...template}
+//         if (item === includeList.length -1) break
+//     }
 
-    console.log(helloStr)
-}
+//     console.log(helloStr)
+// }
 
-finalTemplates
+// finalTemplates
