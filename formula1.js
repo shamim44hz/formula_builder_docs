@@ -1,4 +1,3 @@
-
 // const inputFields = [
 //     {
 //         id: "ae01d224-f568-4a8c-b65a-b924643c7e69",
@@ -226,7 +225,7 @@
 //         componentType: ")",
 //         operator: ")",
 //         isHover: false,
-//         addButton: false, 
+//         addButton: false,
 //     },
 // ];
 
@@ -237,15 +236,31 @@
 // const splitted = myFormula.split(" ");
 // console.log(splitted);
 
-
 /*********************************** Formula and count *************************** */
 
-const inputFields = [{"id":"86b49f44-5832-48cb-b170-ce97ebee890d","value":" ( ","componentType":"(","operator":"(","isHover":false,"addButton":false},{"id":"ef997ac7-a8c1-416a-982c-6df30cb8a55f","value":"COUNT","componentType":"AGGR","operator":"AGGR","isHover":false,"addButton":false},{"id":"4da00197-9e2a-409c-8784-ef4a8febcb75","value":"Category_Level_1","componentType":"CH","operator":"CH","isHover":false,"addButton":false},{"id":"e4a34594-1968-4038-bf90-09b20df06b37","value":" WHERE ","componentType":"WHERE","operator":"WHERE","isHover":false,"addButton":false},{"id":"3d6ad9d9-834d-4d88-bdb1-e6cb1f9a0079","value":"Contract_Number","componentType":"CH","operator":"CH","isHover":false,"addButton":false},{"id":"3dfd0bd4-4567-4248-9e46-34d6c4a03a13","value":"<>","componentType":"Comparator","operator":"Comparator","isHover":false,"addButton":false},{"id":"33680d9b-af15-458d-bf66-0d234da3f527","value":["02702 - Phase II","1-07-42-04","1-07-89-44"],"componentType":"Categorical","operator":"Categorical","isHover":true,"addButton":false},{"id":"67c895ef-9eee-4359-af9e-2c3ba39d06d7","value":" ) ","componentType":")","operator":")","isHover":false,"addButton":false},{"id":"248f5fb7-c43f-4d7a-b3c2-ba85f18dd4f7","value":"","componentType":"Categorical","operator":"Categorical"}]
+const inputFields = [
+    { id: "86b49f44-5832-48cb-b170-ce97ebee890d", value: " ( ", componentType: "(", operator: "(", isHover: false, addButton: false },
+    { id: "ef997ac7-a8c1-416a-982c-6df30cb8a55f", value: "COUNT", componentType: "AGGR", operator: "AGGR", isHover: false, addButton: false },
+    { id: "4da00197-9e2a-409c-8784-ef4a8febcb75", value: "Category_Level_1", componentType: "CH", operator: "CH", isHover: false, addButton: false },
+    { id: "e4a34594-1968-4038-bf90-09b20df06b37", value: " WHERE ", componentType: "WHERE", operator: "WHERE", isHover: false, addButton: false },
+    { id: "3d6ad9d9-834d-4d88-bdb1-e6cb1f9a0079", value: "Contract_Number", componentType: "CH", operator: "CH", isHover: false, addButton: false },
+    { id: "3dfd0bd4-4567-4248-9e46-34d6c4a03a13", value: "<>", componentType: "Comparator", operator: "Comparator", isHover: false, addButton: false },
+    {
+        id: "33680d9b-af15-458d-bf66-0d234da3f527",
+        value: ["02702 - Phase II", "1-07-42-04", "1-07-89-44"],
+        componentType: "Categorical",
+        operator: "Categorical",
+        isHover: true,
+        addButton: false,
+    },
+    { id: "67c895ef-9eee-4359-af9e-2c3ba39d06d7", value: " ) ", componentType: ")", operator: ")", isHover: false, addButton: false },
+    { id: "248f5fb7-c43f-4d7a-b3c2-ba85f18dd4f7", value: "", componentType: "Categorical", operator: "Categorical" },
+];
 
 let aggrCount = 0;
 
 for (let item of inputFields) {
-    if(item.componentType === "AGGR") aggrCount += 1
+    if (item.componentType === "AGGR") aggrCount += 1;
 }
 
 /*********************************** HANDLE WHERE ********************************* */
@@ -253,113 +268,107 @@ for (let item of inputFields) {
 const math = ["+", "-", "/", "*"];
 const aggr = ["SUM", "COUNT", "AVG"];
 
-
 const handleWhere = (element) => {
-    console.log(element)
-    let arrStr = "("
-    for (let i = 0; i< element.length; i++) {
-        if (i !== element.length - 1) arrStr += `'${element[i]}', `
-        else arrStr += `'${element[i]}')`
+    console.log(element);
+    let arrStr = "(";
+    for (let i = 0; i < element.length; i++) {
+        if (i !== element.length - 1) arrStr += `'${element[i]}', `;
+        else arrStr += `'${element[i]}')`;
     }
-    arrStr
-    return arrStr
-}
+    arrStr;
+    return arrStr;
+};
 
 const matcher = {
     "=": "in",
     "<>": "not in",
     ">=": ">=",
-    "<=": "<="
-  };
+    "<=": "<=",
+};
 
-let globalArr = {}
+let globalArr = {};
 
 const whereElementsFetcher = () => {
-    let item = 0
-    let counter = 0
-    
+    let item = 0;
+    let counter = 0;
+
     while (item < inputFields.length) {
-
-        if (inputFields[item].componentType === "AGGR"){
-            counter += 1
+        if (inputFields[item].componentType === "AGGR") {
+            counter += 1;
         }
-        
-        if(inputFields[item].componentType === "WHERE") {
-            item += 1
-            let whereVariables = ""
-            while(inputFields[item].componentType !== ")") {
-                if (inputFields[item].operator === "CH") {
-                    whereVariables += ` ${inputFields[item].value}`
-                    item += 1
-                }
-                else if (inputFields[item].operator === "Comparator") {
-                    if (inputFields[item + 1].operator === "Categorical" && inputFields[item + 1].value.length > 0) {
-                        whereVariables += ` ${matcher[inputFields[item].value]} `
-                    } else {
-                        whereVariables += ` ${inputFields[item].value}`
-                    }
-                    item ++
-                }
-                else if (inputFields[item].operator === "Categorical") {
-                    console.log(inputFields[item])
-                    let response = handleWhere(inputFields[item].value)
-                    whereVariables += response
-                    item += 1
-                } 
-                else if (inputFields[item].operator === "Numerical" || inputFields[item].operator === "AND") {
-                    console.log(inputFields[item].value)
-                    whereVariables += ` ${inputFields[item].value}`
-                    item +=1 
-                }
-                else item += 1
-            }
-            globalArr[counter] = whereVariables
-        } else item += 1
-    }
-}
-whereElementsFetcher()
 
-console.log(globalArr)
+        if (inputFields[item].componentType === "WHERE") {
+            item += 1;
+            let whereVariables = "";
+            while (inputFields[item].componentType !== ")") {
+                if (inputFields[item].operator === "CH") {
+                    whereVariables += ` ${inputFields[item].value}`;
+                    item += 1;
+                } else if (inputFields[item].operator === "Comparator") {
+                    if (inputFields[item + 1].operator === "Categorical" && inputFields[item + 1].value.length > 0) {
+                        whereVariables += ` ${matcher[inputFields[item].value]} `;
+                    } else {
+                        whereVariables += ` ${inputFields[item].value}`;
+                    }
+                    item++;
+                } else if (inputFields[item].operator === "Categorical") {
+                    console.log(inputFields[item]);
+                    let response = handleWhere(inputFields[item].value);
+                    whereVariables += response;
+                    item += 1;
+                } else if (inputFields[item].operator === "Numerical" || inputFields[item].operator === "AND") {
+                    console.log(inputFields[item].value);
+                    whereVariables += ` ${inputFields[item].value}`;
+                    item += 1;
+                } else item += 1;
+            }
+            globalArr[counter] = whereVariables;
+        } else item += 1;
+    }
+};
+whereElementsFetcher();
+
+console.log(globalArr);
 
 /******************************** WHERE ENDS ****************************** */
 
 /********************************** NON TYPE - 1 ********************************** */
 
 const handleNonType1 = () => {
-    let item = 0
+    let item = 0;
     let aggrTemplate = {
         Default_Function: "",
         Formula: "",
         Where: "",
-    }
-    let beforeWhere = ""
-    let afterWhere = ""
+    };
+    let beforeWhere = "";
+    let afterWhere = "";
     while (item < inputFields.length) {
-        if(inputFields[item].componentType === "AGGR") {
-            aggrTemplate.Default_Function = inputFields[item].value
+        if (inputFields[item].componentType === "AGGR") {
+            aggrTemplate.Default_Function = inputFields[item].value;
 
-            while(inputFields[item].componentType !== "WHERE" && inputFields[item].componentType !== ")") {
-                beforeWhere += `${inputFields[item].value} `
-                console.log(beforeWhere)
-                item += 1
-            } 
+            while (inputFields[item].componentType !== "WHERE" && inputFields[item].componentType !== ")") {
+                beforeWhere += `${inputFields[item].value} `;
+                console.log(beforeWhere);
+                item += 1;
+            }
 
             if (inputFields[item].componentType === "WHERE") {
-                item ++
-                while(inputFields[item].componentType !== ")") {
-                    afterWhere += inputFields[item].value
-                    item ++
+                item++;
+                while (inputFields[item].componentType !== ")") {
+                    afterWhere += inputFields[item].value;
+                    item++;
                 }
-            } 
-        } else item ++
+            }
+        } else item++;
     }
-    aggrTemplate.Formula = beforeWhere
-    aggrTemplate.Where = globalArr[1]
+    aggrTemplate.Formula = beforeWhere;
+    aggrTemplate.Where = globalArr[1];
 
-    console.log(aggrTemplate)
-}
+    console.log(aggrTemplate);
+};
 
-if (aggrCount === 1) handleNonType1()
+if (aggrCount === 1) handleNonType1();
 
 /********************************************* TYPE - 1 ********************************************************* */
 
@@ -371,92 +380,49 @@ const template = JSON.stringify({
     left_join: true, //DEFAULT
 });
 
-let dupTemp = JSON.parse(template)
+let dupTemp = JSON.parse(template);
 
-let finalList = []
+let finalList = [];
 
-//   (   (   (  SUM Country  WHERE  Major_City <> Alhambra,Aliso Viejo,Bakersfield  )  /  
-// (  COUNT County  )  x  (  SUM Country  WHERE  Major_City = Aliso Viejo,Anderson,Bellflower AND TCV <= 242442444   )   )  
+//   (   (   (  SUM Country  WHERE  Major_City <> Alhambra,Aliso Viejo,Bakersfield  )  /
+// (  COUNT County  )  x  (  SUM Country  WHERE  Major_City = Aliso Viejo,Anderson,Bellflower AND TCV <= 242442444   )   )
 
-let j = 0
-let serial = 1
-let selectStr = ""
+let j = 0;
+let serial = 1;
+let selectStr = "";
 while (j < inputFields.length) {
-    
     if (inputFields[j].operator === "AGGR") {
         while (inputFields[j].operator !== ")") {
-            if (inputFields[j].componentType === "AGGR"){
-                dupTemp["select"][1] += inputFields[j].value
-                j ++
-            }
-            else if (inputFields[j].componentType === "CH" && (inputFields[j+1].componentType === "WHERE")) {
-                dupTemp["select"][1] += ` ${inputFields[j].value} as part_${serial}` 
-                selectStr += `part_${serial}`
-                j ++
-            }
-            else if (inputFields[j].componentType === "WHERE") {
-                dupTemp.where = globalArr[serial]
-                j ++
-                serial ++
-            }
-            else if (inputFields[j].componentType === "CH"  && (inputFields[j+1].componentType === ")")) {
-                dupTemp["select"][1] += ` ${inputFields[j].value} as part_${serial}` 
-                selectStr += `part_${serial}`
-                serial ++
-                j ++
-            }
-            else j ++
+            if (inputFields[j].componentType === "AGGR") {
+                dupTemp["select"][1] += inputFields[j].value;
+                j++;
+            } else if (inputFields[j].componentType === "CH" && inputFields[j + 1].componentType === "WHERE") {
+                dupTemp["select"][1] += ` ${inputFields[j].value} as part_${serial}`;
+                selectStr += `part_${serial}`;
+                j++;
+            } else if (inputFields[j].componentType === "WHERE") {
+                dupTemp.where = globalArr[serial];
+                j++;
+                serial++;
+            } else if (inputFields[j].componentType === "CH" && inputFields[j + 1].componentType === ")") {
+                dupTemp["select"][1] += ` ${inputFields[j].value} as part_${serial}`;
+                selectStr += `part_${serial}`;
+                serial++;
+                j++;
+            } else j++;
         }
-        finalList.push({...dupTemp})
-        dupTemp = JSON.parse(template)
-        console.log(dupTemp)
-// nknk
-    }
-    else {
-        selectStr += inputFields[j].value
-        j ++
+        finalList.push({ ...dupTemp });
+        dupTemp = JSON.parse(template);
+        console.log(dupTemp);
+        // nknk
+    } else {
+        selectStr += inputFields[j].value;
+        j++;
     }
 }
 
-console.log(selectStr)
-console.log(finalList)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(selectStr);
+console.log(finalList);
 
 // let i = 0;
 
@@ -468,7 +434,6 @@ console.log(finalList)
 //  * PROBLEMS I AM FACING:
 //  * 1. If i
 //  */
-
 
 // while (i < splitted.length) {
 //     if (splitted[i] === "(") {
@@ -510,11 +475,7 @@ console.log(finalList)
 
 // console.log(includeList);
 
-
-
 // let helloStr = ""
-
-
 
 // let myTemplate = {...template}
 // //   "(Nr_count / tot_count) * 100 as \" BD Four Hour Reach %\""
@@ -529,7 +490,7 @@ console.log(finalList)
 
 // while(item < includeList.length) {
 //     let tempStr;
-    
+
 //     if (aggr.includes(includeList[item])) {
 //         tempStr = `"${includeList[item]} (${includeList[item + 1]}) as part_${counter}"`
 //         myStr += `part_${counter}`
